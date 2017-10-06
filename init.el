@@ -37,3 +37,16 @@
 
 ;; line-number
 (global-linum-mode t)
+
+;; smex
+(require 'smex) ; Not needed if you use package.el (in case i'm using legacy emacs in any other place)
+(smex-initialize) ; Can be omitted. This might cause a (minimal) delay
+		  ; when Smex is auto-initialized on its first run.
+
+;; multiple cursors
+(require 'multiple-cursors)
+
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
