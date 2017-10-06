@@ -15,7 +15,7 @@
  '(custom-safe-themes
    (quote
     ("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" default)))
- '(package-selected-packages (quote (web-mode ac-cider request ## cider elpy))))
+ '(package-selected-packages (quote (powerline web-mode ac-cider request ## cider elpy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -66,3 +66,7 @@
 (tool-bar-mode -1)
 
 (add-hook 'after-init-hook (lambda () (load-theme 'dracula)))
+
+(set-default 'cursor-type 'hbar)
+
+(ido-mode)
