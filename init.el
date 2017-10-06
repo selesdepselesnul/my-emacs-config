@@ -56,3 +56,7 @@
 
 ;; Highlight corresponding parentheses when cursor is on one
 (show-paren-mode t)
+
+(menu-bar-mode -1)
+
+(tool-bar-mode -1)
