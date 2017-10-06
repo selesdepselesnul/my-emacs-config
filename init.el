@@ -50,3 +50,9 @@
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+
+;; lazy mode :v
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; Highlight corresponding parentheses when cursor is on one
+(show-paren-mode t)
