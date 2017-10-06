@@ -12,6 +12,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" default)))
  '(package-selected-packages (quote (web-mode ac-cider request ## cider elpy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -60,3 +63,5 @@
 (menu-bar-mode -1)
 
 (tool-bar-mode -1)
+
+(add-hook 'after-init-hook (lambda () (load-theme 'dracula)))
