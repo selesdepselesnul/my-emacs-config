@@ -1,12 +1,29 @@
 (require 'package)
+
+(setq package-enable-at-startup nil)
+
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
                     (not (gnutls-available-p))))
        (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
   (add-to-list 'package-archives (cons "melpa" url) t))
+
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "https://elpa.gnu.org/packages/")))
+
 (package-initialize)
+
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+
+(use-package try
+  :ensure t)
+
+(use-package which-key
+  :ensure t
+  :config (which-key-mode))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -15,7 +32,9 @@
  '(custom-safe-themes
    (quote
     ("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" default)))
- '(package-selected-packages (quote (powerline web-mode ac-cider request ## cider elpy))))
+ '(package-selected-packages
+   (quote
+    (which-key try use-package powerline web-mode ac-cider request ## cider elpy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
