@@ -45,11 +45,9 @@
 ;; line-number
 (global-linum-mode t)
 
-;; smex
-(require 'smex) ; Not needed if you use package.el (in case i'm using legacy emacs in any other place)
-(smex-initialize) ; Can be omitted. This might cause a (minimal) delay
-		  ; when Smex is auto-initialized on its first run.
-(global-set-key (kbd "M-x") 'smex)
+;; helm
+(require 'helm-config)
+(global-set-key (kbd "M-x") 'helm-M-x)
 
 ;; multiple cursors
 (require 'multiple-cursors)
