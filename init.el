@@ -24,6 +24,10 @@
   :ensure t
   :config (which-key-mode))
 
+(defun selesdepselesnul/config ()
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -34,7 +38,7 @@
     ("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" default)))
  '(package-selected-packages
    (quote
-    (projectile neotree helm restclient rainbow-delimiters dracula-theme which-key try use-package powerline web-mode ac-cider request ## cider elpy))))
+    (helm-config projectile neotree helm restclient rainbow-delimiters dracula-theme which-key try use-package powerline web-mode ac-cider request ## cider elpy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -42,33 +46,48 @@
  ;; If there is more than one, they won't work right.
  )
 
+;; paredit
+(use-package paredit
+  :ensure t
+  :config
+  (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
+  (add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
+  (add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
+  (add-hook 'ielm-mode-hook             #'enable-paredit-mode)
+  (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
+  (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
+  (add-hook 'scheme-mode-hook           #'enable-paredit-mode))
+
+;; auto-complete
+(use-package auto-complete
+  :ensure t
+  :config
+  (ac-config-default))
+
+;; helm
+(use-package helm
+  :ensure t
+  :bind (("M-x" . helm-M-x)
+	 ("C-x b" . helm-mini)))
+
+;; multiple cursors
+(use-package multiple-cursors
+  :ensure t
+  :bind ("C-S-<mouse-1>" . mc/add-cursor-on-click))
+
+(use-package projectile
+  :ensure t
+  :config
+  (projectile-mode))
+
+(use-package cider
+  :ensure t)
+
 ;; turn off annoying bell
 (setq visible-bell t)
 
-;; paredit
-(autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-(add-hook 'emacs-lisp-mode-hook       #'enable-paredit-mode)
-(add-hook 'eval-expression-minibuffer-setup-hook #'enable-paredit-mode)
-(add-hook 'ielm-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-mode-hook             #'enable-paredit-mode)
-(add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-(add-hook 'scheme-mode-hook           #'enable-paredit-mode)
-
-;; auto-complete
-(ac-config-default)
-
 ;; line-number
 (global-linum-mode t)
-
-;; helm
-(require 'helm-config)
-(global-set-key (kbd "M-x") 'helm-M-x)
-(global-set-key (kbd "C-x b") 'helm-mini)
-
-;; multiple cursors
-(require 'multiple-cursors)
-
-(global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
 
 ;; lazy mode :v
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -82,8 +101,8 @@
 
 (add-hook 'after-init-hook (lambda () (load-theme 'dracula)))
 
-(set-default 'cursor-type 'hbar)
+;;(set-default 'cursor-type 'hbar)
 
 (ido-mode)
 
-(projectile-mode)
+
