@@ -38,7 +38,7 @@
     ("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" default)))
  '(package-selected-packages
    (quote
-    (company-mode centered-window-mode sound-wav helm-config projectile neotree helm restclient rainbow-delimiters dracula-theme which-key try use-package powerline web-mode request ## cider elpy))))
+    (slime company-mode centered-window-mode sound-wav helm-config projectile neotree helm restclient rainbow-delimiters dracula-theme which-key try use-package powerline web-mode request ## cider elpy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -85,6 +85,12 @@
 
 (use-package cider
   :ensure t)
+
+(use-package slime
+  :ensure t
+  :config
+  (setq inferior-lisp-program "/usr/bin/sbcl")
+  (setq slime-contribs '(slime-fancy)))
 
 ;; turn off annoying bell
 (setq visible-bell t)
