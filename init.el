@@ -38,9 +38,8 @@
     ("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" default)))
  '(package-selected-packages
    (quote
-    (centered-window-mode sound-wav helm-config projectile neotree helm restclient rainbow-delimiters dracula-theme which-key try use-package powerline web-mode ac-cider request ## cider elpy))))
-(custom-set-
- faces
+    (company-mode centered-window-mode sound-wav helm-config projectile neotree helm restclient rainbow-delimiters dracula-theme which-key try use-package powerline web-mode request ## cider elpy))))
+(custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
@@ -59,11 +58,11 @@
   (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
   (add-hook 'scheme-mode-hook           #'enable-paredit-mode))
 
-;; auto-complete
-(use-package auto-complete
+;; company-mode
+(use-package company-mode 
   :ensure t
   :config
-  (ac-config-default))
+  (add-hook 'after-init-hook 'global-company-mode))
 
 ;; helm
 (use-package helm
@@ -108,5 +107,3 @@
 ;;(set-default 'cursor-type 'hbar)
 
 (ido-mode)
-
-
