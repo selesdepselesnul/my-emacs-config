@@ -89,6 +89,9 @@
 ;; turn off annoying bell
 (setq visible-bell t)
 
+;; when a file is updated outside emacs, make it update if it's already opened in emacs
+(global-auto-revert-mode 1)
+
 ;; line-number
 (global-linum-mode t)
 
