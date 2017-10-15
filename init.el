@@ -56,7 +56,8 @@
   (add-hook 'ielm-mode-hook             #'enable-paredit-mode)
   (add-hook 'lisp-mode-hook             #'enable-paredit-mode)
   (add-hook 'lisp-interaction-mode-hook #'enable-paredit-mode)
-  (add-hook 'scheme-mode-hook           #'enable-paredit-mode))
+  (add-hook 'scheme-mode-hook           #'enable-paredit-mode)
+  (add-hook 'clojure-mode-hook #'enable-paredit-mode))
 
 ;; company-mode
 (use-package company-mode 
@@ -88,10 +89,10 @@
 
 (when (eq 'gnu/linux system-type)
   (use-package slime
-  :ensure t
-  :config
-  (setq inferior-lisp-program "/usr/bin/sbcl")
-  (setq slime-contribs '(slime-fancy))))
+    :ensure t
+    :config
+    (setq inferior-lisp-program "/usr/bin/sbcl")
+    (setq slime-contribs '(slime-fancy))))
 
 ;; turn off annoying bell
 (setq visible-bell t)
