@@ -37,7 +37,7 @@
     ("ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" default)))
  '(package-selected-packages
    (quote
-    (slime company-mode centered-window-mode sound-wav helm-config projectile neotree helm restclient rainbow-delimiters dracula-theme which-key try use-package powerline web-mode request ## cider elpy))))
+    (rainbow-delimeters slime company-mode centered-window-mode sound-wav helm-config projectile neotree helm restclient rainbow-delimiters dracula-theme which-key try use-package powerline web-mode request ## cider elpy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -45,22 +45,32 @@
  ;; If there is more than one, they won't work right.
  )
 
+(defconst lisp-family-mode-hooks
+          '(emacs-lisp-mode-hook
+	    eval-expression-minibuffer-setup-hook
+	    ielm-mode-hook
+	    lisp-mode-hook
+	    lisp-interaction-mode-hook
+	    scheme-mode-hook
+	    clojure-mode-hook))
+
 ;; paredit
 (use-package paredit
   :ensure t
   :config
   (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-  (dolist (hook '(emacs-lisp-mode-hook
-		  eval-expression-minibuffer-setup-hook
-		  ielm-mode-hook
-		  lisp-mode-hook
-		  lisp-interaction-mode-hook
-		  scheme-mode-hook
-		  clojure-mode-hook))     
+  (dolist (hook lisp-family-mode-hooks)     
     (add-hook hook #'enable-paredit-mode)))
 
+
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+  (dolist (hook lisp-family-mode-hooks)     
+    (add-hook hook #'rainbow-delimiters-mode)))
+
 ;; company-mode
-(use-package company-mode 
+(use-package company
   :ensure t
   :config
   (add-hook 'after-init-hook 'global-company-mode))
