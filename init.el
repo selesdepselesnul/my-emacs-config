@@ -86,11 +86,12 @@
 (use-package cider
   :ensure t)
 
-(use-package slime
+(when (eq 'gnu/linux system-type)
+  (use-package slime
   :ensure t
   :config
   (setq inferior-lisp-program "/usr/bin/sbcl")
-  (setq slime-contribs '(slime-fancy)))
+  (setq slime-contribs '(slime-fancy))))
 
 ;; turn off annoying bell
 (setq visible-bell t)
