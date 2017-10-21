@@ -34,10 +34,10 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" default)))
+    ("cdfc5c44f19211cfff5994221078d7d5549eeb9feda4f595a2fd8ca40467776c" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" default)))
  '(package-selected-packages
    (quote
-    (zenburn magit rainbow-delimeters slime company-mode centered-window-mode sound-wav helm-config projectile neotree helm restclient rainbow-delimiters dracula-theme which-key try use-package powerline web-mode request ## cider elpy))))
+    (aggressive-indent zenburn magit rainbow-delimeters slime company-mode centered-window-mode sound-wav helm-config projectile neotree helm restclient rainbow-delimiters which-key try use-package powerline web-mode request ## cider elpy))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -46,15 +46,14 @@
  )
 
 (defconst lisp-family-mode-hooks
-          '(emacs-lisp-mode-hook
-	    eval-expression-minibuffer-setup-hook
-	    ielm-mode-hook
-	    lisp-mode-hook
-	    lisp-interaction-mode-hook
-	    scheme-mode-hook
-	    clojure-mode-hook))
+  '(emacs-lisp-mode-hook
+    eval-expression-minibuffer-setup-hook
+    ielm-mode-hook
+    lisp-mode-hook
+    lisp-interaction-mode-hook
+    scheme-mode-hook
+    clojure-mode-hook))
 
-;; paredit
 (use-package paredit
   :ensure t
   :config
@@ -62,26 +61,22 @@
   (dolist (hook lisp-family-mode-hooks)     
     (add-hook hook #'enable-paredit-mode)))
 
-
 (use-package rainbow-delimiters
   :ensure t
   :config
   (dolist (hook lisp-family-mode-hooks)     
     (add-hook hook #'rainbow-delimiters-mode)))
 
-;; company-mode
 (use-package company
   :ensure t
   :config
   (add-hook 'after-init-hook 'global-company-mode))
 
-;; helm
 (use-package helm
   :ensure t
   :bind (("M-x" . helm-M-x)
 	 ("C-x b" . helm-mini)))
 
-;; multiple cursors
 (use-package multiple-cursors
   :ensure t
   :bind (("C->" . mc/mark-next-like-this)
@@ -109,6 +104,14 @@
   :config
   (add-hook 'after-init-hook (lambda () (load-theme 'zenburn))))
 
+(use-package aggressive-indent
+  :ensure t
+  :config
+  (dolist (hook lisp-family-mode-hooks)     
+    (add-hook hook #'aggressive-indent-mode)))
+
+(setq inhibit-startup-screen t)
+
 ;; turn off annoying bell
 (setq visible-bell t)
 
@@ -127,8 +130,5 @@
 (menu-bar-mode -1)
 
 (tool-bar-mode -1)
-
-
-;;(set-default 'cursor-type 'hbar)
 
 (ido-mode)
