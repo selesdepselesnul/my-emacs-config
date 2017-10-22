@@ -127,6 +127,9 @@
 ;; Highlight corresponding parentheses when cursor is on one
 (show-paren-mode t)
 
+;; replace highlighted text when yanking
+(delete-selection-mode 1)
+
 (menu-bar-mode -1)
 
 (tool-bar-mode -1)
