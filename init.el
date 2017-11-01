@@ -103,18 +103,18 @@
   :config
   (add-hook 'clojure-mode-hook #'my-clojure-mode-hook))
 
-
-(if (eq 'gnu/linux system-type)
-    (use-package slime
-      :ensure t
-      :config
-      (setq inferior-lisp-program "/usr/bin/sbcl")
-      (setq slime-contribs '(slime-fancy)))
-  (use-package slime
-    :ensure t
-    :config
-    (setq inferior-lisp-program (shell-quote-argument "/c/Users/ATD-DEDEN/ccl/wx86cl.exe"))
-    (setq slime-contribs '(slime-fancy))))
+(cond ((eq 'gnu/linux system-type)
+       (use-package slime
+	 :ensure t
+	 :config
+	 (setq inferior-lisp-program "/usr/bin/sbcl")
+	 (setq slime-contribs '(slime-fancy))))
+      ((eq 'windows-nt system-type)
+       (use-package slime
+	 :ensure t
+	 :config
+	 (setq inferior-lisp-program "~/ccl/wx86cl64.exe")
+	 (setq slime-contribs '(slime-fancy)))))
 
 (setq inhibit-startup-screen t)
 
