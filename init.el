@@ -74,13 +74,6 @@
 (use-package cider
   :ensure t)
 
-(when (eq 'gnu/linux system-type)
-  (use-package slime
-    :ensure t
-    :config
-    (setq inferior-lisp-program "/usr/bin/sbcl")
-    (setq slime-contribs '(slime-fancy))))
-
 (use-package zenburn-theme
   :ensure t
   :config
