@@ -27,24 +27,6 @@
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("cdfc5c44f19211cfff5994221078d7d5549eeb9feda4f595a2fd8ca40467776c" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" default)))
- '(package-selected-packages
-   (quote
-    (aggressive-indent zenburn magit rainbow-delimeters slime company-mode centered-window-mode sound-wav helm-config projectile neotree helm restclient rainbow-delimiters which-key try use-package powerline web-mode request ## cider elpy))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
 (defconst lisp-family-mode-hooks
   '(emacs-lisp-mode-hook
     eval-expression-minibuffer-setup-hook
@@ -110,6 +92,30 @@
   (dolist (hook lisp-family-mode-hooks)     
     (add-hook hook #'aggressive-indent-mode)))
 
+(defun my-clojure-mode-hook ()
+  (clj-refactor-mode 1)
+  (yas-minor-mode 1) ; for adding require/use/import statements
+  ;; This choice of keybinding leaves cider-macroexpand-1 unbound
+  (cljr-add-keybindings-with-prefix "C-c C-m"))
+
+(use-package clj-refactor
+  :ensure t
+  :config
+  (add-hook 'clojure-mode-hook #'my-clojure-mode-hook))
+
+
+(if (eq 'gnu/linux system-type)
+    (use-package slime
+      :ensure t
+      :config
+      (setq inferior-lisp-program "/usr/bin/sbcl")
+      (setq slime-contribs '(slime-fancy)))
+  (use-package slime
+    :ensure t
+    :config
+    (setq inferior-lisp-program (shell-quote-argument "/c/Users/ATD-DEDEN/ccl/wx86cl.exe"))
+    (setq slime-contribs '(slime-fancy))))
+
 (setq inhibit-startup-screen t)
 
 ;; turn off annoying bell
@@ -143,3 +149,21 @@
 (setq-default cursor-type 'bar)
 
 (ido-mode)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("cdfc5c44f19211cfff5994221078d7d5549eeb9feda4f595a2fd8ca40467776c" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" default)))
+ '(package-selected-packages
+   (quote
+    (clj-refactor aggressive-indent zenburn magit rainbow-delimeters slime company-mode centered-window-mode sound-wav helm-config projectile neotree helm restclient rainbow-delimiters which-key try use-package powerline web-mode request ## cider elpy))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
