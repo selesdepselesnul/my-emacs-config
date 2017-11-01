@@ -103,18 +103,17 @@
   :config
   (add-hook 'clojure-mode-hook #'my-clojure-mode-hook))
 
+(defun config-slime (path)
+  (use-package slime
+    :ensure t
+    :config
+    (setq inferior-lisp-program path)
+    (setq slime-contribs '(slime-fancy))))
+
 (cond ((eq 'gnu/linux system-type)
-       (use-package slime
-	 :ensure t
-	 :config
-	 (setq inferior-lisp-program "/usr/bin/sbcl")
-	 (setq slime-contribs '(slime-fancy))))
+       (config-slime "/usr/bin/sbcl"))
       ((eq 'windows-nt system-type)
-       (use-package slime
-	 :ensure t
-	 :config
-	 (setq inferior-lisp-program "~/ccl/wx86cl64.exe")
-	 (setq slime-contribs '(slime-fancy)))))
+       (config-slime "~/ccl/wx86cl64.exe")))
 
 (setq inhibit-startup-screen t)
 
