@@ -40,13 +40,13 @@
   :ensure t
   :config
   (autoload 'enable-paredit-mode "paredit" "Turn on pseudo-structural editing of Lisp code." t)
-  (dolist (hook lisp-family-mode-hooks)     
+  (dolist (hook lisp-family-mode-hooks)
     (add-hook hook #'enable-paredit-mode)))
 
 (use-package rainbow-delimiters
   :ensure t
   :config
-  (dolist (hook lisp-family-mode-hooks)     
+  (dolist (hook lisp-family-mode-hooks)
     (add-hook hook #'rainbow-delimiters-mode)))
 
 (use-package company
@@ -57,14 +57,14 @@
 (use-package helm
   :ensure t
   :bind (("M-x" . helm-M-x)
-	 ("C-x b" . helm-mini)))
+         ("C-x b" . helm-mini)))
 
 (use-package multiple-cursors
   :ensure t
   :bind (("C->" . mc/mark-next-like-this)
-	 ("C-<" . mc/mark-previous-like-this)
-	 ("C-c C-<" . mc/mark-all-like-this)
-	 ("C-S-<mouse-1>" . mc/add-cursor-on-click)))
+         ("C-<" . mc/mark-previous-like-this)
+         ("C-c C-<" . mc/mark-all-like-this)
+         ("C-S-<mouse-1>" . mc/add-cursor-on-click)))
 
 (use-package projectile
   :ensure t
@@ -82,7 +82,7 @@
 (use-package aggressive-indent
   :ensure t
   :config
-  (dolist (hook lisp-family-mode-hooks)     
+  (dolist (hook lisp-family-mode-hooks)
     (add-hook hook #'aggressive-indent-mode)))
 
 (defun my-clojure-mode-hook ()
@@ -108,6 +108,16 @@
       ((eq 'windows-nt system-type)
        (config-slime "~/ccl/wx86cl64.exe")))
 
+
+(use-package whitespace
+  :init
+  (dolist (hook '(prog-mode-hook text-mode-hook))
+    (add-hook hook #'whitespace-mode))
+  (add-hook 'before-save-hook #'whitespace-cleanup)
+  :config
+  (setq whitespace-line-column 80) ;; limit line length
+  (setq whitespace-style '(face tabs empty trailing lines-tail)))
+
 (setq inhibit-startup-screen t)
 
 ;; turn off annoying bell
@@ -116,7 +126,8 @@
 (setq-default indent-tabs-mode nil);; don't use tabs to indent
 (setq-default tab-width 8);; but maintain correct appearance
 
-;; when a file is updated outside emacs, make it update if it's already opened in emacs
+;; when a file is updated outside emacs,
+;; make it update if it's already opened in emacs
 (global-auto-revert-mode 1)
 
 ;; line-number
