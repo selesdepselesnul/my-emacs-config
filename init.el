@@ -113,6 +113,9 @@
 ;; turn off annoying bell
 (setq visible-bell t)
 
+(setq-default indent-tabs-mode nil);; don't use tabs to indent
+(setq-default tab-width 8);; but maintain correct appearance
+
 ;; when a file is updated outside emacs, make it update if it's already opened in emacs
 (global-auto-revert-mode 1)
 
