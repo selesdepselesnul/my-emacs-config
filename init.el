@@ -12,6 +12,52 @@
 
 (package-initialize)
 
+(setq load-prefer-newer t)
+
+;; reduce the frequency of garbage collection by making it happen on
+;; each 50MB of allocated data (the default is on every 0.76MB)
+(setq gc-cons-threshold 50000000)
+
+(setq inhibit-startup-screen t)
+
+(blink-cursor-mode -1)
+
+;; turn off annoying bell
+(setq visible-bell t)
+
+(setq-default indent-tabs-mode nil);; don't use tabs to indent
+(setq-default tab-width 8);; but maintain correct appearance
+
+;; when a file is updated outside emacs,
+;; make it update if it's already opened in emacs
+(global-auto-revert-mode 1)
+
+;; line-number
+(global-linum-mode t)
+
+;; lazy mode :v
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; Highlight corresponding parentheses when cursor is on one
+(show-paren-mode t)
+
+;; replace highlighted text when yanking
+(delete-selection-mode 1)
+
+(menu-bar-mode -1)
+
+(tool-bar-mode -1)
+
+;; scroll one line at a time (less "jumpy" than defaults)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+(setq scroll-step 1) ;; keyboard scroll one line at a time
+
+(setq-default cursor-type 'bar)
+
+(ido-mode)
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
@@ -117,44 +163,6 @@
   :config
   (setq whitespace-line-column 80) ;; limit line length
   (setq whitespace-style '(face tabs empty trailing lines-tail)))
-
-(setq inhibit-startup-screen t)
-
-;; turn off annoying bell
-(setq visible-bell t)
-
-(setq-default indent-tabs-mode nil);; don't use tabs to indent
-(setq-default tab-width 8);; but maintain correct appearance
-
-;; when a file is updated outside emacs,
-;; make it update if it's already opened in emacs
-(global-auto-revert-mode 1)
-
-;; line-number
-(global-linum-mode t)
-
-;; lazy mode :v
-(fset 'yes-or-no-p 'y-or-n-p)
-
-;; Highlight corresponding parentheses when cursor is on one
-(show-paren-mode t)
-
-;; replace highlighted text when yanking
-(delete-selection-mode 1)
-
-(menu-bar-mode -1)
-
-(tool-bar-mode -1)
-
-;; scroll one line at a time (less "jumpy" than defaults)
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
-(setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
-(setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
-(setq scroll-step 1) ;; keyboard scroll one line at a time
-
-(setq-default cursor-type 'bar)
-
-(ido-mode)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
