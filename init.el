@@ -64,6 +64,8 @@
 
 (setq-default cursor-type 'bar)
 
+(scroll-bar-mode -1)
+
 (ido-mode)
 
 (unless (package-installed-p 'use-package)
