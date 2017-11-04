@@ -66,6 +66,9 @@
 
 (scroll-bar-mode -1)
 
+;; copy directly without asking
+(setq dired-recursive-copies (quote always))
+
 (ido-mode)
 
 (unless (package-installed-p 'use-package)
