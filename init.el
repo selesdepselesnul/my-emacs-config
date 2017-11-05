@@ -113,7 +113,7 @@
 
 (use-package company
   :ensure t
-  :config
+  :init
   (add-hook 'after-init-hook 'global-company-mode)
   :bind (("C-x /" . company-complete-common)))
 
