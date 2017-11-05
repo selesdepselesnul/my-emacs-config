@@ -195,9 +195,10 @@
   :ensure t)
 
 (use-package magit
-  :ensure t)
+  :ensure t
+  :bind (("C-x g" . magit-status)))
 
-(custom-set-variables
+(Custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
