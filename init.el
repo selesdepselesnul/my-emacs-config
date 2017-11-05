@@ -70,6 +70,8 @@
 
 (global-prettify-symbols-mode 1)
 
+(global-hl-line-mode t)
+
 (ido-mode)
 
 (unless (package-installed-p 'use-package)
