@@ -12,6 +12,7 @@
 
 (package-initialize)
 
+
 (setq load-prefer-newer t)
 
 ;; reduce the frequency of garbage collection by making it happen on
@@ -111,7 +112,8 @@
 (use-package company
   :ensure t
   :config
-  (add-hook 'after-init-hook 'global-company-mode))
+  (add-hook 'after-init-hook 'global-company-mode)
+  :bind (("C-x /" . company-complete-common)))
 
 (use-package helm
   :ensure t
