@@ -70,6 +70,8 @@
 ;; copy directly without asking
 (setq dired-recursive-copies (quote always))
 
+(global-prettify-symbols-mode 1)
+
 (ido-mode)
 
 (unless (package-installed-p 'use-package)
