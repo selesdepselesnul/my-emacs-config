@@ -21,8 +21,6 @@
 
 (setq inhibit-startup-screen t)
 
-(blink-cursor-mode -1)
-
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
