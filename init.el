@@ -62,9 +62,7 @@
 (setq scroll-step 1) ;; keyboard scroll one line at a time
 
 (setq-default cursor-type 'bar)
-
 (scroll-bar-mode -1)
-
 ;; copy directly without asking
 (setq dired-recursive-copies (quote always))
 
@@ -79,14 +77,19 @@
 (use-package try
   :ensure t)
 
-(use-package ivy
+(use-package web-mode
+  :ensure t)
+
+(use-package counsel
   :ensure t
   :config
   (ivy-mode 1)
   (setq ivy-use-virtual-buffers t)
   (setq ivy-count-format "(%d/%d) ")
   :bind
-  (("C-s" . swiper)))
+  (("C-s" . swiper)
+   ("M-x" . counsel-M-x)
+   ("C-x C-f" . counsel-find-file)))
 
 (use-package which-key
   :ensure t
@@ -124,10 +127,6 @@
   (add-hook 'after-init-hook 'global-company-mode)
   :bind (("C-x /" . company-complete-common)))
 
-(use-package helm
-  :ensure t
-  :bind (("M-x" . helm-M-x)
-         ("C-x b" . helm-mini)))
 
 (use-package multiple-cursors
   :ensure t
@@ -224,10 +223,10 @@
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
    (quote
-    ("cdfc5c44f19211cfff5994221078d7d5549eeb9feda4f595a2fd8ca40467776c" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" default)))
+    ("2a739405edf418b8581dcd176aaf695d319f99e3488224a3c495cb0f9fd814e3" "cdfc5c44f19211cfff5994221078d7d5549eeb9feda4f595a2fd8ca40467776c" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" default)))
  '(package-selected-packages
    (quote
-    (mmm-mode quack racket-mode geiser disable-mouse clj-refactor aggressive-indent zenburn magit rainbow-delimeters slime company-mode centered-window-mode sound-wav helm-config projectile neotree helm restclient rainbow-delimiters which-key try use-package powerline web-mode request ## cider))))
+    (counsel mmm-mode quack racket-mode geiser disable-mouse clj-refactor aggressive-indent zenburn magit rainbow-delimeters slime company-mode centered-window-mode sound-wav helm-config projectile neotree helm restclient rainbow-delimiters which-key try use-package powerline web-mode request ## cider))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
