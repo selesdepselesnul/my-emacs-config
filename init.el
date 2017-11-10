@@ -72,7 +72,7 @@
 
 (global-hl-line-mode t)
 
-(ido-mode)
+;; (ido-mode)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -80,6 +80,13 @@
 
 (use-package try
   :ensure t)
+
+(use-package ivy
+  :ensure t
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) "))
 
 (use-package which-key
   :ensure t
