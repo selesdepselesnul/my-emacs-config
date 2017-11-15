@@ -169,7 +169,7 @@
     :ensure t
     :config
     (setq inferior-lisp-program path)
-    (setq slime-contribs '(slime-fancy))))
+    (setq slime-contribs '(slime-fancy slime-asdf))))
 
 (cond ((eq 'gnu/linux system-type)
        (config-slime "/usr/bin/sbcl"))
