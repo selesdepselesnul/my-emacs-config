@@ -70,6 +70,8 @@
 
 (global-hl-line-mode t)
 
+(setq org-confirm-babel-evaluate nil)
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
