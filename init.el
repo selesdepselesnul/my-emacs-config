@@ -30,7 +30,7 @@
 (setq visible-bell t)
 
 (setq-default indent-tabs-mode nil);; don't use tabs to indent
-(setq-default tab-width 8);; but maintain correct appearance
+(setq-default tab-width 4);; but maintain correct appearance
 
 ;; when a file is updated outside emacs,
 ;; make it update if it's already opened in emacs
