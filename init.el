@@ -134,9 +134,12 @@
 
 (use-package multiple-cursors
   :ensure t
-  :bind (("C->" . mc/mark-next-like-this)
-         ("C-<" . mc/mark-previous-like-this)
-         ("C-c C-<" . mc/mark-all-like-this)))
+  :config
+  (global-unset-key (kbd "M-<down-mouse-1>"))
+  (global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click)
+  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
 
 (use-package projectile
   :ensure t
@@ -179,11 +182,6 @@
        (config-slime "/usr/bin/sbcl"))
       ((eq 'windows-nt system-type)
        (config-slime "~/ccl/wx86cl64.exe")))
-
-(use-package disable-mouse
-  :ensure t
-  :config
-  (global-disable-mouse-mode))
 
 (use-package racket-mode
   :ensure t)
