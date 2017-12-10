@@ -36,9 +36,6 @@
 ;; make it update if it's already opened in emacs
 (global-auto-revert-mode 1)
 
-;; line-number
-(global-linum-mode t)
-
 ;; lazy mode :v
 (fset 'yes-or-no-p 'y-or-n-p)
 
