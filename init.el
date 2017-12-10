@@ -61,7 +61,6 @@
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 (setq scroll-step 1) ;; keyboard scroll one line at a time
 
-(setq-default cursor-type 'bar)
 (scroll-bar-mode -1)
 ;; copy directly without asking
 (setq dired-recursive-copies (quote always))
