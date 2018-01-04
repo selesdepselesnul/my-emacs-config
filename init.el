@@ -70,6 +70,8 @@
 
 (setq next-line-add-newlines t)
 
+(setq make-backup-files nil)
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
