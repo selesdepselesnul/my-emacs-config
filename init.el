@@ -12,7 +12,6 @@
 
 (package-initialize)
 
-
 (setq load-prefer-newer t)
 
 ;; reduce the frequency of garbage collection by making it happen on
@@ -71,10 +70,6 @@
 (setq next-line-add-newlines t)
 
 (setq make-backup-files nil)
-
-;; set a default font
-(when (member "DejaVu Sans Mono" (font-family-list))
-  (set-face-attribute 'default nil :font "DejaVu Sans Mono"))
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -223,9 +218,6 @@
   :ensure t)
 
 (use-package haskell-mode
-  :ensure t)
-
-(use-package fsharp-mode
   :ensure t)
 
 (custom-set-variables
