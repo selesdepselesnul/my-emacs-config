@@ -71,6 +71,10 @@
 
 (setq make-backup-files nil)
 
+;; dired : always delete and copy recursively
+(setq dired-recursive-deletes 'always)
+(setq dired-recursive-copies 'always)
+
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
 (unless (package-installed-p 'use-package)
