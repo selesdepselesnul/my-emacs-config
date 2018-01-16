@@ -77,6 +77,8 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(setq use-package-verbose t)
+
 (use-package try
   :ensure t)
 
