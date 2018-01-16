@@ -12,6 +12,11 @@
 
 (package-initialize)
 
+(defun selesdepselesnul/config ()
+  (interactive)
+  (find-file "~/.emacs.d/init.el"))
+
+;; prevents stale elisp bytecode from shadowing more up-to-date source files
 (setq load-prefer-newer t)
 
 ;; reduce the frequency of garbage collection by making it happen on
@@ -29,6 +34,7 @@
 ;; turn off annoying bell
 (setq visible-bell t)
 
+;; using setq-default instead of setq because inden-tabs-mode & tab-width are local buffer variable
 (setq-default indent-tabs-mode nil);; don't use tabs to indent
 (setq-default tab-width 4);; but maintain correct appearance
 
@@ -36,7 +42,7 @@
 ;; make it update if it's already opened in emacs
 (global-auto-revert-mode 1)
 
-;; lazy mode :v
+;; jusy use y / n instead of yes / no when asking for confirmation
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; Highlight corresponding parentheses when cursor is on one
@@ -56,14 +62,10 @@
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 (setq scroll-step 1) ;; keyboard scroll one line at a time
 
-;; copy directly without asking
-(setq dired-recursive-copies (quote always))
-
+;; for pretty unicode symbol
 (global-prettify-symbols-mode 1)
 
 (global-hl-line-mode t)
-
-(setq org-confirm-babel-evaluate nil)
 
 (setq next-line-add-newlines t)
 
@@ -106,10 +108,6 @@
   :ensure t
   :config (which-key-mode))
 
-(defun selesdepselesnul/config ()
-  (interactive)
-  (find-file "~/.emacs.d/init.el"))
-
 (defconst lisp-family-mode-hooks
   '(emacs-lisp-mode-hook
     eval-expression-minibuffer-setup-hook
@@ -138,15 +136,16 @@
   (add-hook 'after-init-hook 'global-company-mode)
   :bind (("C-x /" . company-complete-common)))
 
-
 (use-package multiple-cursors
   :ensure t
-  :config
+  :init
   (global-unset-key (kbd "M-<down-mouse-1>"))
-  (global-set-key (kbd "M-<mouse-1>") 'mc/add-cursor-on-click)
-  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
-  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
-  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
+  :bind (("M-<mouse-1>" . mc/add-cursor-on-click)
+         ("C->" . mc/mark-next-like-this)
+         ("C-<" . mc/mark-previous-like-this)
+         ("C-c C-<" . mc/mark-all-like-this))
+  :config
+  (multiple-cursors-mode))
 
 (use-package projectile
   :ensure t
