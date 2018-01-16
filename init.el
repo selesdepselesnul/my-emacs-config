@@ -71,6 +71,8 @@
 
 (setq make-backup-files nil)
 
+(add-hook 'before-save-hook 'whitespace-cleanup)
+
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
