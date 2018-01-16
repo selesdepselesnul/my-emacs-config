@@ -20,6 +20,7 @@
 
 (setq inhibit-startup-screen t)
 
+;; set font
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
@@ -44,12 +45,10 @@
 ;; replace highlighted text when yanking
 (delete-selection-mode 1)
 
+;; disable some gui stuff
 (menu-bar-mode -1)
-
 (tool-bar-mode -1)
-
-;; auto refresh dired when file changes
-(add-hook 'dired-mode-hook 'auto-revert-mode)
+(scroll-bar-mode -1)
 
 ;; scroll one line at a time (less "jumpy" than defaults)
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
@@ -57,7 +56,6 @@
 (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
 (setq scroll-step 1) ;; keyboard scroll one line at a time
 
-(scroll-bar-mode -1)
 ;; copy directly without asking
 (setq dired-recursive-copies (quote always))
 
@@ -71,10 +69,6 @@
 
 (setq make-backup-files nil)
 
-;; dired : always delete and copy recursively
-(setq dired-recursive-deletes 'always)
-(setq dired-recursive-copies 'always)
-
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
 (unless (package-installed-p 'use-package)
@@ -82,6 +76,14 @@
   (package-install 'use-package))
 
 (setq use-package-verbose t)
+
+(use-package dired
+  :config
+  ;; dired : always delete and copy recursively
+  (setq dired-recursive-deletes 'always)
+  (setq dired-recursive-copies 'always)
+  ;; auto refresh dired when file changes
+  (add-hook 'dired-mode-hook 'auto-revert-mode))
 
 (use-package try
   :ensure t)
@@ -241,7 +243,7 @@
     ("a25bd2ca94d2d4b86b2e2a6aa16528a47880784f4b09168a37c540e2dd721753" "2a739405edf418b8581dcd176aaf695d319f99e3488224a3c495cb0f9fd814e3" "cdfc5c44f19211cfff5994221078d7d5549eeb9feda4f595a2fd8ca40467776c" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" default)))
  '(package-selected-packages
    (quote
-    (nasm-mode fsharp-mode haskell-mode elm-mode rust-mode alecs-theme zenburn-theme dired+ go-mode beacon sml-modeline base16-theme counsel mmm-mode quack racket-mode geiser disable-mouse clj-refactor aggressive-indent zenburn magit rainbow-delimeters slime company-mode centered-window-mode sound-wav helm-config projectile neotree helm restclient rainbow-delimiters which-key try use-package powerline web-mode request ## cider))))
+    (dired nasm-mode fsharp-mode haskell-mode elm-mode rust-mode alecs-theme zenburn-theme dired+ go-mode beacon sml-modeline base16-theme counsel mmm-mode quack racket-mode geiser disable-mouse clj-refactor aggressive-indent zenburn magit rainbow-delimeters slime company-mode centered-window-mode sound-wav helm-config projectile neotree helm restclient rainbow-delimiters which-key try use-package powerline web-mode request ## cider))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
