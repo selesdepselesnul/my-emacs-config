@@ -71,6 +71,16 @@
 
 (setq make-backup-files nil)
 
+;; get rid of ^M in windows
+(defun no-dos-please-were-unixish ()
+  (let ((coding-str (symbol-name buffer-file-coding-system)))
+    (when (string-match "-dos$" coding-str)
+      (setq coding-str
+            (concat (substring coding-str 0 (match-beginning 0)) "-unix"))
+      (message "CODING: %s" coding-str)
+      (set-buffer-file-coding-system (intern coding-str)))))
+
+(add-hook 'find-file-hooks 'no-dos-please-were-unixish)
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
 (unless (package-installed-p 'use-package)
