@@ -67,8 +67,6 @@
 
 (global-hl-line-mode t)
 
-(setq next-line-add-newlines t)
-
 (setq make-backup-files nil)
 
 ;; get rid of ^M in windows
