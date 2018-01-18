@@ -83,7 +83,6 @@
       (set-buffer-file-coding-system (intern coding-str)))))
 
 (add-hook 'find-file-hooks 'no-dos-please-were-unixish)
-(add-hook 'before-save-hook 'whitespace-cleanup)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -177,12 +176,6 @@
   :ensure t
   :config
   (load-theme 'zenburn t))
-
-(use-package aggressive-indent
-  :ensure t
-  :config
-  (dolist (hook lisp-family-mode-hooks)
-    (add-hook hook #'aggressive-indent-mode)))
 
 (defun my-clojure-mode-hook ()
   (clj-refactor-mode 1)
