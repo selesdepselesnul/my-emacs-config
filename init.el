@@ -88,6 +88,9 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(setq-default header-line-format 
+              (list " " (make-string 79 ?-) "|"))
+
 (setq use-package-verbose t)
 
 (use-package benchmark-init
