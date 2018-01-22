@@ -91,7 +91,7 @@
 (setq-default header-line-format
               (list "|"
                     (make-string 79 ?-)
-                    "| di paskeun sakieu cuy 80 col mun bisa mah"))
+                    "|"))
 
 (setq use-package-verbose t)
 
