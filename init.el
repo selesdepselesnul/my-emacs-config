@@ -178,7 +178,7 @@
 (use-package alect-themes
   :ensure t
   :config
-  (load-theme 'alect-black-alt t))
+  (load-theme 'alect-black t))
 
 (defun my-clojure-mode-hook ()
   (clj-refactor-mode 1)
