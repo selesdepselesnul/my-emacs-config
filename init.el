@@ -88,8 +88,10 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(setq-default header-line-format 
-              (list " " (make-string 79 ?-) "|"))
+(setq-default header-line-format
+              (list "|"
+                    (make-string 79 ?-)
+                    "| di paskeun sakieu cuy 80 col mun bisa mah"))
 
 (setq use-package-verbose t)
 
