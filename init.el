@@ -17,6 +17,8 @@
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 
+(load-theme 'manoj-dark t)
+
 ;; prevents stale elisp bytecode from shadowing more up-to-date source files
 (setq load-prefer-newer t)
 
@@ -177,11 +179,6 @@
 (use-package cider
   :ensure t)
 
-(use-package alect-themes
-  :ensure t
-  :config
-  (load-theme 'alect-black t))
-
 (defun my-clojure-mode-hook ()
   (clj-refactor-mode 1)
   (yas-minor-mode 1) ; for adding require/use/import statements
@@ -253,7 +250,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (alect-black-alt)))
+ '(custom-enabled-themes (quote (manoj-dark)))
  '(custom-safe-themes
    (quote
     ("04dd0236a367865e591927a3810f178e8d33c372ad5bfef48b5ce90d4b476481" "444238426b59b360fb74f46b521933f126778777c68c67841c31e0a68b0cc920" "7356632cebc6a11a87bc5fcffaa49bae528026a78637acd03cae57c091afd9b9" "a25bd2ca94d2d4b86b2e2a6aa16528a47880784f4b09168a37c540e2dd721753" "2a739405edf418b8581dcd176aaf695d319f99e3488224a3c495cb0f9fd814e3" "cdfc5c44f19211cfff5994221078d7d5549eeb9feda4f595a2fd8ca40467776c" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" default)))
