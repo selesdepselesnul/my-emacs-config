@@ -175,10 +175,10 @@
 (use-package cider
   :ensure t)
 
-(use-package zenburn-theme
+(use-package alect-themes
   :ensure t
   :config
-  (load-theme 'zenburn t))
+  (load-theme 'alect-black t))
 
 (defun my-clojure-mode-hook ()
   (clj-refactor-mode 1)
@@ -256,7 +256,7 @@
     ("a25bd2ca94d2d4b86b2e2a6aa16528a47880784f4b09168a37c540e2dd721753" "2a739405edf418b8581dcd176aaf695d319f99e3488224a3c495cb0f9fd814e3" "cdfc5c44f19211cfff5994221078d7d5549eeb9feda4f595a2fd8ca40467776c" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" default)))
  '(package-selected-packages
    (quote
-    (benchmark-init dired nasm-mode fsharp-mode haskell-mode elm-mode rust-mode alecs-theme zenburn-theme dired+ go-mode beacon sml-modeline base16-theme counsel mmm-mode quack racket-mode geiser disable-mouse clj-refactor zenburn magit rainbow-delimeters slime company-mode centered-window-mode sound-wav helm-config projectile neotree helm restclient rainbow-delimiters which-key try use-package powerline web-mode request ## cider))))
+    (alect-themes benchmark-init dired nasm-mode fsharp-mode haskell-mode elm-mode rust-mode alecs-theme dired+ go-mode beacon sml-modeline base16-theme counsel mmm-mode quack racket-mode geiser disable-mouse clj-refactor zenburn magit rainbow-delimeters slime company-mode centered-window-mode sound-wav helm-config projectile neotree helm restclient rainbow-delimiters which-key try use-package powerline web-mode request ## cider))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
