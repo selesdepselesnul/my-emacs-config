@@ -17,6 +17,10 @@
   (interactive)
   (find-file "~/.emacs.d/init.el"))
 
+(defun selesdepselesnul/stumpwm-config ()
+  (interactive)
+  (find-file "~/.stumpwm.d/init.lisp"))
+
 ;; prevents stale elisp bytecode from shadowing more up-to-date source files
 (setq load-prefer-newer t)
 
