@@ -99,10 +99,10 @@
 
 (setq use-package-verbose t)
 
-(use-package alect-themes
+(use-package zenburn-theme
   :ensure t
   :config
-  (load-theme 'alect-black-alt 't))
+  (load-theme 'zenburn 't))
 
 (use-package benchmark-init
   :ensure t
@@ -260,7 +260,7 @@
     ("04dd0236a367865e591927a3810f178e8d33c372ad5bfef48b5ce90d4b476481" "444238426b59b360fb74f46b521933f126778777c68c67841c31e0a68b0cc920" "7356632cebc6a11a87bc5fcffaa49bae528026a78637acd03cae57c091afd9b9" "a25bd2ca94d2d4b86b2e2a6aa16528a47880784f4b09168a37c540e2dd721753" "2a739405edf418b8581dcd176aaf695d319f99e3488224a3c495cb0f9fd814e3" "cdfc5c44f19211cfff5994221078d7d5549eeb9feda4f595a2fd8ca40467776c" "67e998c3c23fe24ed0fb92b9de75011b92f35d3e89344157ae0d544d50a63a72" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "ff7625ad8aa2615eae96d6b4469fcc7d3d20b2e1ebc63b761a349bebbb9d23cb" default)))
  '(package-selected-packages
    (quote
-    (php-mode alect-themes benchmark-init dired nasm-mode fsharp-mode haskell-mode elm-mode rust-mode alecs-theme dired+ go-mode beacon sml-modeline base16-theme counsel mmm-mode quack racket-mode geiser disable-mouse clj-refactor zenburn magit rainbow-delimeters slime company-mode centered-window-mode sound-wav helm-config projectile neotree helm restclient rainbow-delimiters which-key try use-package powerline web-mode request ## cider))))
+    (php-mode benchmark-init dired nasm-mode fsharp-mode haskell-mode elm-mode rust-mode alecs-theme dired+ go-mode beacon sml-modeline base16-theme counsel mmm-mode quack racket-mode geiser disable-mouse clj-refactor zenburn magit rainbow-delimeters slime company-mode centered-window-mode sound-wav helm-config projectile neotree helm restclient rainbow-delimiters which-key try use-package powerline web-mode request ## cider))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
