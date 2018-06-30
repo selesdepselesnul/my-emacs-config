@@ -21,6 +21,13 @@
   (interactive)
   (find-file "~/.stumpwm.d/init.lisp"))
 
+(defun selesdepselesnul/kill-other-buffers ()
+  "Kill all buffers but the current one. Don't mess with special buffers."
+  (interactive)
+  (dolist (buffer (buffer-list))
+    (unless (or (eql buffer (current-buffer)) (not (buffer-file-name buffer)))
+      (kill-buffer buffer))))
+
 ;; prevents stale elisp bytecode from shadowing more up-to-date source files
 (setq load-prefer-newer t)
 
