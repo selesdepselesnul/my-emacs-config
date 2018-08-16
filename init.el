@@ -123,7 +123,8 @@
   (setq dired-recursive-deletes 'always)
   (setq dired-recursive-copies 'always)
   ;; auto refresh dired when file changes
-  (add-hook 'dired-mode-hook 'auto-revert-mode))
+  (add-hook 'dired-mode-hook 'auto-revert-mode)
+  (setq dired-dwim-target t))
 
 (use-package try
   :ensure t)
